@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"os/signal"
 	"runtime"
@@ -10,8 +11,11 @@ import (
 	"github.com/mbpyytcqw/k8s/pkg/logger"
 )
 
-func main() {
+// build Defines for which enviroment curr. version of app.
+var build string = "develop"
 
+func main() {
+	fmt.Println(1)
 	ctx := context.Background()
 
 	var log *logger.Logger
@@ -32,7 +36,7 @@ func main() {
 }
 
 func run(ctx context.Context, log *logger.Logger) error {
-	log.Info(ctx, "startup server", "max procs", runtime.GOMAXPROCS(0))
+	log.Info(ctx, "startup server", "max procs", runtime.GOMAXPROCS(0), "enviroment", build)
 
 	sigCh := make(chan os.Signal, 1)
 	signal.Notify(sigCh, os.Interrupt, syscall.SIGTERM)

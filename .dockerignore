@@ -1,0 +1,10 @@
+.git/
+.reading/
+.dockerignore
+.gitignore
+api/programs/frontends/
+configs/docker
+configs/k8s
+LICENSE
+makefile
+README.md
